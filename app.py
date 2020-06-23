@@ -7,15 +7,15 @@ import math
 
 # TODO: Load model
 
-APP = Flask(__name__)
+app = Flask(__name__)
 
-@APP.route('/')
+@app.route('/')
 def root():
     # song_id = request.args.get('song_id')
     return "This works"
     # return get_song_recommendations(song_id)
 
-@APP.route('/song')
+@app.route('/song')
 def get_recommendations():
     song_id = request.args.get('song_id')
     return get_song_recommendations(song_id)
