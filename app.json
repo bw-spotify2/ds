@@ -1,0 +1,15 @@
+{
+  "name": "Spotify Lambda predictions",
+  "description": "A prognostication to help people find junk to listen to.",
+  "image": "heroku/python",
+  "repository": "https://github.com/bw-spotify2/ds/",
+  "keywords": ["python" ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}
