@@ -3,22 +3,22 @@ from flask import request
 
 import json, jsonify
 import requests, math
-
-# TODO: Load model (model_data model.py)
+from model import predict
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods = ["POST"])
 def root():
-    # song_id = request.args.get('song_id')
-    return "This works"
+    return request.get_json()
     # return get_song_recommendations(song_id)
 
-@app.route('/song')
+@app.route('/song', methods = ["POST"])
 def get_recommendations():
-    song_id = request.args.get('song_id')
+    song_id = request.args.get_json('song_id')
     return get_song_recommendations(song_id)
 
 def get_song_recommendations(song_id):
-    # TODO: send song id to model
+    song_id_list = predict(song_features)
     return {song_id_list}
+    
+
