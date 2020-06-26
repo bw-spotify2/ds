@@ -9,16 +9,15 @@ app = Flask(__name__)
 
 @app.route('/', methods = ["POST"])
 def root():
-    return request.get_json()
-    # return get_song_recommendations(song_id)
+    variables = ["acousticness", "danceability", "duration_ms", "energy", "instrumentalness", "liveness", "loudness", "speechiness", "tempo", "valence", "key", "mode", "time_signature"]
+    data = request.args
+    filtered_var = []
+    for x in variables:
+        filtered_var.append(data[x])
 
-@app.route('/song', methods = ["POST"])
-def get_recommendations():
-    song_id = request.args.get_json('song_id')
-    return get_song_recommendations(song_id)
+    return_ids = predict([filtered_var])
 
-def get_song_recommendations(song_id):
-    song_id_list = predict(song_features)
-    return {song_id_list}
-    
+    return json.dumps(return_ids)
 
+if __name__ == "__main__":
+    pass
