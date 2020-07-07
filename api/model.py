@@ -27,13 +27,10 @@ def predict(song_attributes):
 
   ### Encode Input ###
 
-  # Loading the pickled autoencoder model
-  pickle_filename = "data/autoencoder_model.pkl"
-    
-  autoencoder_pkl = open(pickle_filename, 'rb')
-  autoencoder = pickle.load(autoencoder_pkl)
+  # Loading the autoencoder model
+  autoencoder = tf.keras.models.load_model('auto_model.sav')
 
-   # ### Read in the CSV ###
+  # ### Read in the CSV ###
   database = pd.read_csv('data\encoded_data.csv')
 
   input_x_y_z = (autoencoder.predict(input_scaled)[0][0], 

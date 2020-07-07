@@ -9,7 +9,9 @@ app = Flask(__name__)
 
 @app.route('/', methods = ["POST"])
 def root():
-    variables = ["acousticness", "danceability", "duration_ms", "energy", "instrumentalness", "liveness", "loudness", "speechiness", "tempo", "valence", "key", "mode", "time_signature"]
+    variables = ["acousticness", "danceability", "duration_ms", "energy",
+     "instrumentalness", "liveness", "loudness", "speechiness", "tempo", 
+     "valence", "key", "mode", "time_signature"]
     data = request.args
     filtered_var = []
     for x in variables:
@@ -19,5 +21,3 @@ def root():
 
     return json.dumps(return_ids)
 
-if __name__ == "__main__":
-    pass
